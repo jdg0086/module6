@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p>Branch: {{ branch }}</p>
+<p>Brokers: </p>
+
+
+    {% for agent in agents %}
+    <div style="margin-bottom: 5px; padding:1rem; background: #d4d4d4; display: inline-block">
+        <p>Date Hired: {{ agent.date_added|date:'M d, Y' }}</p>
+        <p>Agent Name: <a href="{% url 'main_app:agent' agent.id %}"> {{ agent.name }} </a></p>
+    </div>
+    {% empty %}
+    <li>No Brokers at this Branch Currently</li>
+    {% endfor %}
+
+<p>
+    <a href="{% url 'main_app:new_agent' branch.id %}">Add new Agent</a>
+</p>
+
+<p>
+    <a href="{% url 'main_app:edit_branch' branch.id %}">Edit Branch Name</a>
+</p>
+
+
+{% endblock content %}

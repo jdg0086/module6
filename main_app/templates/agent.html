@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<p>Agent: {{ agent }}</p>
+<p>Special License: {{ agent.special_license }}</p>
+<p>Transactions: </p>
+
+
+    {% for tran in transactions %}
+    <div style="margin-bottom: 5px; padding:1rem; background: #d4d4d4; display: inline-block">
+        <p>Date Sold: {{ tran.date_added|date:'M d, Y' }}</p>
+        <p>Buyer Name: {{ tran.buyer_name }}</p>
+        <p>Dollar Amount: ${{ tran.gross_sale_amount }}</p>
+        <p>Volume: {{ tran.volume }}</p>
+        <p>Order #: {{ tran.order_number }}</p>
+    </div>
+    {% empty %}
+    <li>No Transactions for this Agent Currently</li>
+    {% endfor %}
+
+<p>
+    <a href="{% url 'main_app:new_transaction' agent.id %}">Add new Trans</a>
+</p>
+
+<p>
+    <a href="{% url 'main_app:edit_agent' agent.id %}">Edit Agent</a>
+</p>
+
+{% endblock content %}

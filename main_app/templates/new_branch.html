@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <form action="{% url 'main_app:new_branch' %}" method='post'
+      class="form">
+
+        {% csrf_token %}
+
+       {{ form.as_p }}
+
+
+      <button name="submit" class="btn btn-primary">add branch</button>
+
+
+  </form>
+
+{% endblock content %}

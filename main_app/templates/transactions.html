@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4>Widgets International Transactions Page</h4>
+
+<p>Transactions:</p>
+    <ul>
+        {% for transaction in transactions %}
+        <div>
+            <a href="{% url 'main_app:transaction' transaction.id %}">{{ transaction }}</a>
+        </div>
+        {% empty %}
+        <li>No transaction have been added yet.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

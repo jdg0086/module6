@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Widgets International Branches Page</h4>
+<p>Branches:</p>
+    <ul>
+        {% for branch in branches %}
+        <div>
+            <a href="{% url 'main_app:branch' branch.id %}">{{ branch }}</a>
+        </div>
+        {% empty %}
+        <li>No topics have been added yet.</li>
+        {% endfor %}
+    </ul>
+
+<a href="{% url 'main_app:new_branch' %}">Add a new branch</a>
+
+{% endblock content %}

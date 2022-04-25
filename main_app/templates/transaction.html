@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<p>Transaction: {{transaction}} </p>
+
+    <div style="margin-bottom: 5px; padding:1rem; background: #d4d4d4; display: inline-block">
+        <p>Sales Agent: {{ transaction.agent}}</p>
+        <p>Date Sold: {{ transaction.date_added|date:'M d, Y' }}</p>
+        <p>Buyer Name: {{ transaction.buyer_name }}</p>
+        <p>Dollar Amount: ${{ transaction.gross_sale_amount }}</p>
+        <p>Volume: {{ transaction.volume }}</p>
+        <p>Order #: {{ transaction.order_number }}</p>
+    </div>
+
+<p>
+    <a href="{% url 'main_app:edit_transaction' transaction.id %}">Edit Transaction</a>
+</p>
+
+<p>
+    <a href="{% url 'main_app:destroy_transaction' transaction.id %}">Delete Transaction</a>
+</p>
+
+{% endblock content %}

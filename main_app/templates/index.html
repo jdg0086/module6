@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Widgets International Sales Site</h1>
+
+<p>Branches:</p>
+    <ul>
+        {% for branch in branches %}
+        <div>
+            <a href="{% url 'main_app:branch' branch.id %}">{{ branch }}</a>
+        </div>
+        {% empty %}
+        <li>No branch have been added yet.</li>
+        {% endfor %}
+    </ul>
+<p>Brokers:</p>
+    <ul>
+        {% for agent in agents %}
+        <div>
+            <a href="{% url 'main_app:agent' agent.id %}">{{ agent }}</a>
+        </div>
+        {% empty %}
+        <li>No agent have been added yet.</li>
+        {% endfor %}
+    </ul>
+<p>Transactions:</p>
+    <ul>
+        {% for tran in transactions %}
+        <div>
+            <a href="{% url 'main_app:transaction' tran.id %}">{{ tran }}</a>
+        </div>
+        {% empty %}
+        <li>No transactions.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

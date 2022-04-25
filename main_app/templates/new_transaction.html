@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <p><a href="{% url 'main_app:agent' agent.id %}">{{ branch }}</a></p>
+  <form action="{% url 'main_app:new_transaction' agent.id %}" method='post' class="form">
+
+        {% csrf_token %}
+
+        {{ form.as_p
+
+
+      <button name="submit" class="btn btn-primary">Add Transaction</button>
+
+  </form>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h4>Widgets International Agents Page</h4>
+
+<p>Agents:</p>
+    <ul>
+        {% for agent in agents %}
+        <div>
+            <a href="{% url 'main_app:agent' agent.id %}">{{ agent }}</a>
+        </div>
+        {% empty %}
+        <li>No topics have been added yet.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

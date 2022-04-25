@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+  <p>Edit agent:</p>
+
+  <form action="{% url 'main_app:edit_agent' agent.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">save changes</button>
+  </form>
+
+{% endblock content %}
